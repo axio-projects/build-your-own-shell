@@ -9,6 +9,7 @@ import { NavigationComponent } from './module/navigation/navigation.component';
     styleUrl: './main.component.scss'
 })
 export class MainComponent {
-    protected icon = 'shell';
     protected title = 'Build Your Own Shell';
+    protected iconName = 'shell';
+    protected fontSet = 'material-symbols-outlined';
 }

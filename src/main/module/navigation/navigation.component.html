@@ -3,9 +3,9 @@
         <a class="home-link" href="/" matButton>
             <span class="home-link-container">
                 @if (icons) {
-                    <mat-icon [svgIcon]="icon" />
+                    <mat-icon [svgIcon]="iconName" />
                 } @else {
-                    <mat-icon>{{ icon }}</mat-icon>
+                    <mat-icon [fontSet]="fontSet">{{ iconName }}</mat-icon>
                 }
                 <span>Axio</span>
             </span>
@@ -13,7 +13,7 @@
         <h1>{{ title }}</h1>
         <div class="light-dark-toggle">
             @if (colorSchemes) {
-                <mat-slide-toggle color="suface" [(ngModel)]="colorSchemeToggle" (toggleChange)="onColorSchemeToggle()" labelPosition="before" hideIcon />
+                <mat-slide-toggle [(ngModel)]="colorSchemeToggle" (toggleChange)="onColorSchemeToggle()" labelPosition="before" hideIcon />
             }
         </div>
     </header>

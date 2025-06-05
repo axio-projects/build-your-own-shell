@@ -1,56 +1,63 @@
 @use '@angular/material' as mat;
 
 section.navigation {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header.header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--mat-sys-on-background);
-    background-color: var(--mat-sys-background);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--mat-sys-on-background);
+  background-color: var(--mat-sys-background);
 
-    mat-slide-toggle {
-        padding-inline: 16px;
-    }
+  mat-slide-toggle {
+    padding-inline: 16px;
+  }
 }
 
 a.home-link {
-    height: 100%;
+  height: 100%;
 
-    @include mat.button-overrides((text-container-shape: 0));
+  @include mat.button-overrides((text-container-shape: 0));
 }
 
 span.home-link-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
 
-    font: {
-        size: 32px;
-        weight: 600;
+  font: {
+    size: 32px;
+    weight: 600;
+  }
+
+  mat-icon.mat-icon {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    font-size: inherit;
+    text-align: center;
+
+    background: linear-gradient(90deg, var(--mat-sys-primary) 0%, var(--mat-sys-secondary) 25%, var(--mat-sys-tertiary) 50%, var(--mat-sys-secondary) 75%, var(--mat-sys-primary) 100%) {
+      clip: text;
     }
+  }
 
-    mat-icon.mat-icon {
-        flex: none;
-        width: 32px;
-        height: 32px;
+  span {
+    flex: none;
+    letter-spacing: -2px;
+    padding-inline: 0.5rem;
+
+    background: linear-gradient(90deg, var(--mat-sys-primary) 0%, var(--mat-sys-secondary) 50%, var(--mat-sys-tertiary) 100%) {
+      clip: text;
     }
-
-    span {
-        flex: none;
-        letter-spacing: -2px;
-        color: transparent;
-        margin-inline: 0.5rem;
-
-        background: linear-gradient(90deg, var(--mat-sys-primary) 0%, var(--mat-sys-secondary) 50%, var(--mat-sys-tertiary) 100%) {
-            clip: text;
-        }
-    }
+  }
 }
+
+div.light-dark-toggle {}

@@ -2,11 +2,12 @@ import { DOCUMENT, inject, Injectable, NgZone } from '@angular/core';
 import { ColorScheme } from './model/color-scheme';
 import { BehaviorSubject } from 'rxjs';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { ColorSchemeInterface } from './color-scheme.interface';
 
 const PREFERS_COLOR_SCHEME_DARK = '(prefers-color-scheme: dark)';
 
 @Injectable()
-export class ColorSchemeService {
+export class ColorSchemeService implements ColorSchemeInterface {
     currentColorScheme: ColorScheme = ColorScheme.LIGHT;
     readonly $colorScheme = new BehaviorSubject<ColorScheme>(ColorScheme.LIGHT);
 
@@ -36,6 +37,10 @@ export class ColorSchemeService {
                 this.document.documentElement.classList.add(this.currentColorScheme);
             }
         });
+    }
+
+    observable(): BehaviorSubject<ColorScheme> {
+        return this.$colorScheme;
     }
 
     ngOnDestroy(): void {
