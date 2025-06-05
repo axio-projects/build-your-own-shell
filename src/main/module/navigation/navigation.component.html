@@ -1,0 +1,15 @@
+<section class="navigation">
+    <header class="header">
+        <a class="home-link" routerLink="." matButton>
+            <span class="home-link-container">
+                <mat-icon [svgIcon]="icon" />
+                <span>Axio</span>
+            </span>
+        </a>
+        <h1>{{ title }}</h1>
+        <mat-slide-toggle [(ngModel)]="colorScheme" (toggleChange)="onColorSchemeToggle()" labelPosition="before" hideIcon>Light/Dark</mat-slide-toggle>
+    </header>
+    <main-mat-sidenav-adapter>
+        <ng-content></ng-content>
+    </main-mat-sidenav-adapter>
+</section>

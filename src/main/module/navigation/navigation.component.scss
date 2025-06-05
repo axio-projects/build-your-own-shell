@@ -1,0 +1,56 @@
+@use '@angular/material' as mat;
+
+section.navigation {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--mat-sys-on-background);
+  background-color: var(--mat-sys-background);
+
+  mat-slide-toggle {
+    padding-inline: 16px;
+  }
+}
+
+a.home-link {
+  height: 100%;
+
+  @include mat.button-overrides((text-container-shape: 0));
+}
+
+span.home-link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  font: {
+    size: 32px;
+    weight: 600;
+  }
+
+  mat-icon.mat-icon {
+    flex: none;
+    width: 32px;
+    height: 32px;
+  }
+
+  span {
+    flex: none;
+    letter-spacing: -2px;
+    color: transparent;
+    margin-inline: 0.5rem;
+
+    background: linear-gradient(90deg, var(--mat-sys-primary) 0%, var(--mat-sys-secondary) 50%, var(--mat-sys-tertiary) 100%) {
+      clip: text;
+    }
+  }
+}
