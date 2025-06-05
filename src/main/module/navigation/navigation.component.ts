@@ -1,12 +1,11 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatSidenavAdapterComponent } from './component/mat-sidenav-adapter/mat-sidenav-adapter.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ColorScheme } from '../shared/service/color-scheme/model/color-scheme';
-import { MAT_ICON } from '../shared/service/mat-icon/mat-icon.interface';
-import { COLOR_SCHEME } from '../shared/service/color-scheme/color-scheme.interface';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
     selector: 'main-navigation',
@@ -19,19 +18,23 @@ export class NavigationComponent {
     @Input({ required: true }) iconName!: string;
     @Input() fontSet = 'material-icons';
 
+    protected hasMatIconService = false;
+    protected hasColorSchemeService = false;
     protected currentColorScheme?: ColorScheme;
 
-    protected icons = inject(MAT_ICON, { optional: true });
-    protected colorSchemes = inject(COLOR_SCHEME, { optional: true });
-
-    constructor() {
-        if (this.icons) {
-            this.icons.initialize();
+    constructor(
+        public shared: SharedService
+    ) {
+        if (this.shared.hasMatIcons()) {
+            this.hasMatIconService = true;
+            this.shared.matIcons().initialize();
         }
 
-        if (this.colorSchemes) {
-            this.currentColorScheme = this.colorSchemes.current();
-            this.colorSchemes.observable().subscribe(next => {
+        if (this.shared.hasColorSchemes()) {
+            this.hasColorSchemeService = true;
+            const colorSchemeService = this.shared.colorSchemes();
+            this.currentColorScheme = colorSchemeService.current();
+            colorSchemeService.observable().subscribe(next => {
                 switch (next) {
                     case ColorScheme.LIGHT: {
                         this.currentColorScheme = ColorScheme.LIGHT;
@@ -51,7 +54,7 @@ export class NavigationComponent {
     }
 
     onColorSchemeToggle(value: ColorScheme): void {
-        this.colorSchemes!.observable().next(value);
+        this.shared.colorSchemes().observable().next(value);
     }
 
     protected LIGHT = ColorScheme.LIGHT;

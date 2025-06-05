@@ -2,7 +2,7 @@
     <header class="header">
         <a class="home-link" href="/" matButton>
             <span class="home-link-container">
-                @if (icons) {
+                @if (hasMatIconService) {
                     <mat-icon [svgIcon]="iconName" />
                 } @else {
                     <mat-icon [fontSet]="fontSet">{{ iconName }}</mat-icon>
@@ -12,7 +12,7 @@
         </a>
         <h1>{{ title }}</h1>
         <div class="color-scheme-toggle-container">
-            @if (colorSchemes) {
+            @if (hasColorSchemeService) {
                 <button type="button" class="color-scheme-toggle-button" matIconButton matTooltip="Select a Theme" [matMenuTriggerFor]="colorSchemeMenu">
                     @switch (currentColorScheme) {
                         @case (LIGHT) {
