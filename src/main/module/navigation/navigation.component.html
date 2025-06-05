@@ -13,7 +13,7 @@
         <h1>{{ title }}</h1>
         <div class="color-scheme-toggle-container">
             @if (colorSchemes) {
-                <button type="button" class="color-scheme-toggle-button" matIconButton [matMenuTriggerFor]="colorSchemeMenu">
+                <button type="button" class="color-scheme-toggle-button" matIconButton matTooltip="Select a Theme" [matMenuTriggerFor]="colorSchemeMenu">
                     @switch (currentColorScheme) {
                         @case (LIGHT) {
                             <mat-icon fontSet="material-symbols-outlined">light_mode</mat-icon>

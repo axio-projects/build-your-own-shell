@@ -6,10 +6,11 @@ import { ColorScheme } from '../shared/service/color-scheme/model/color-scheme';
 import { MAT_ICON } from '../shared/service/mat-icon/mat-icon.interface';
 import { COLOR_SCHEME } from '../shared/service/color-scheme/color-scheme.interface';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
     selector: 'main-navigation',
-    imports: [MatSidenavAdapterComponent, MatButtonModule, MatIconModule, MatMenuModule],
+    imports: [MatSidenavAdapterComponent, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss'
 })

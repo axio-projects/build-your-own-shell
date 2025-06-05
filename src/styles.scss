@@ -34,6 +34,7 @@ html {
     --font-family-inter: #{meta.inspect($font-family-inter)};
     --font-family-inter-tight: #{meta.inspect($font-family-inter-tight)};
 
+    color-scheme: light dark;
     @include mat.theme((color: (primary: main-theme.$primary-palette,
                 tertiary: main-theme.$tertiary-palette),
             typography: (plain-family: $font-family-inter,
@@ -58,12 +59,16 @@ body {
 
 }
 
+.light-mode {
+    color-scheme: light;
+}
+
 .dark-mode {
     color-scheme: dark;
 }
 
-.light-mode {
-    color-scheme: light;
+.light-dark-mode {
+    color-scheme: light dark;
 }
 
 img,
