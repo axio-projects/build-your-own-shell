@@ -26,7 +26,7 @@ export class NavigationComponent {
         this.icons.initialize();
 
         this.shared.$colorScheme.subscribe(next => {
-            if (next === 'DARK') {
+            if (next === 'dark-mode') {
                 this.colorScheme = true;
             } else {
                 this.colorScheme = false;
@@ -36,9 +36,9 @@ export class NavigationComponent {
 
     onColorSchemeToggle(): void {
         if (this.colorScheme) {
-            this.shared.$colorScheme.next('DARK');
+            this.shared.$colorScheme.next('light-mode');
         } else {
-            this.shared.$colorScheme.next('LIGHT');
+            this.shared.$colorScheme.next('dark-mode');
         }
     }
 }
