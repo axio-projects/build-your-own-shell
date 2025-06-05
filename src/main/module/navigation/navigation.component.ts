@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Optional } from '@angular/core';
 import { MatSidenavAdapterComponent } from './component/mat-sidenav-adapter/mat-sidenav-adapter.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatIconService } from '../shared/service/mat-icon.service';
+import { MatIconService } from '../shared/service/mat-icon/mat-icon.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { SharedService } from '../shared/shared.service';
+import { ColorSchemeService } from '../shared/service/color-scheme/color-scheme.service';
+import { ColorScheme } from '../shared/service/color-scheme/model/color-scheme';
 
 @Component({
     selector: 'main-navigation',
@@ -17,28 +18,32 @@ export class NavigationComponent {
     @Input({ required: true }) icon!: string;
     @Input({ required: true }) title!: string;
 
-    protected colorScheme = false;
+    protected colorSchemeToggle = false;
 
     constructor(
-        public shared: SharedService,
-        public icons: MatIconService
+        @Optional() public icons: MatIconService | null,
+        @Optional() public colorSchemes: ColorSchemeService | null
     ) {
-        this.icons.initialize();
+        if (this.icons) {
+            this.icons.initialize();
+        }
 
-        this.shared.$colorScheme.subscribe(next => {
-            if (next === 'dark-mode') {
-                this.colorScheme = true;
-            } else {
-                this.colorScheme = false;
-            }
-        });
+        if (this.colorSchemes) {
+            this.colorSchemes.$colorScheme.subscribe(next => {
+                if (next === ColorScheme.DARK) {
+                    this.colorSchemeToggle = true;
+                } else {
+                    this.colorSchemeToggle = false;
+                }
+            });
+        }
     }
 
     onColorSchemeToggle(): void {
-        if (this.colorScheme) {
-            this.shared.$colorScheme.next('light-mode');
+        if (this.colorSchemeToggle) {
+            this.colorSchemes!.$colorScheme.next(ColorScheme.LIGHT);
         } else {
-            this.shared.$colorScheme.next('dark-mode');
+            this.colorSchemes!.$colorScheme.next(ColorScheme.DARK);
         }
     }
 }

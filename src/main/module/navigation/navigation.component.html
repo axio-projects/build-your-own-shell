@@ -1,13 +1,21 @@
 <section class="navigation">
     <header class="header">
-        <a class="home-link" routerLink="." matButton>
+        <a class="home-link" href="/" matButton>
             <span class="home-link-container">
-                <mat-icon [svgIcon]="icon" />
+                @if (icons) {
+                    <mat-icon [svgIcon]="icon" />
+                } @else {
+                    <mat-icon>{{ icon }}</mat-icon>
+                }
                 <span>Axio</span>
             </span>
         </a>
         <h1>{{ title }}</h1>
-        <mat-slide-toggle [(ngModel)]="colorScheme" (toggleChange)="onColorSchemeToggle()" labelPosition="before" hideIcon>Light/Dark</mat-slide-toggle>
+        <div class="light-dark-toggle">
+            @if (colorSchemes) {
+                <mat-slide-toggle color="suface" [(ngModel)]="colorSchemeToggle" (toggleChange)="onColorSchemeToggle()" labelPosition="before" hideIcon />
+            }
+        </div>
     </header>
     <main-mat-sidenav-adapter>
         <ng-content></ng-content>
