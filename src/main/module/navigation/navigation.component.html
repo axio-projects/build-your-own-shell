@@ -11,9 +11,43 @@
             </span>
         </a>
         <h1>{{ title }}</h1>
-        <div class="light-dark-toggle">
+        <div class="color-scheme-toggle-container">
             @if (colorSchemes) {
-                <mat-slide-toggle [(ngModel)]="colorSchemeToggle" (toggleChange)="onColorSchemeToggle()" labelPosition="before" hideIcon />
+                <button type="button" class="color-scheme-toggle-button" matIconButton [matMenuTriggerFor]="colorSchemeMenu">
+                    @switch (currentColorScheme) {
+                        @case (LIGHT) {
+                            <mat-icon fontSet="material-symbols-outlined">light_mode</mat-icon>
+                        }
+                        @case (DARK) {
+                            <mat-icon fontSet="material-symbols-outlined">dark_mode</mat-icon>
+                        }
+                        @default {
+                            <mat-icon fontSet="material-symbols-outlined">routine</mat-icon>
+                        }
+                    }
+                </button>
+                <mat-menu #colorSchemeMenu="matMenu">
+                    <ul class="color-scheme-menu">
+                        <li>
+                            <button mat-menu-item (click)="onColorSchemeToggle(LIGHT)">
+                                    <mat-icon fontSet="material-symbols-outlined">light_mode</mat-icon>
+                                    <span>Light</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-menu-item (click)="onColorSchemeToggle(DARK)">
+                                    <mat-icon fontSet="material-symbols-outlined">dark_mode</mat-icon>
+                                    <span>Dark</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-menu-item (click)="onColorSchemeToggle(AUTO)">
+                                    <mat-icon fontSet="material-symbols-outlined">routine</mat-icon>
+                                    <span>System</span>
+                            </button>
+                        </li>
+                    </ul>
+                </mat-menu>
             }
         </div>
     </header>

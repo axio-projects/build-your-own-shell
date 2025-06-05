@@ -8,8 +8,8 @@ const PREFERS_COLOR_SCHEME_DARK = '(prefers-color-scheme: dark)';
 
 @Injectable()
 export class ColorSchemeService implements ColorSchemeInterface {
-    currentColorScheme: ColorScheme = ColorScheme.LIGHT;
-    readonly $colorScheme = new BehaviorSubject<ColorScheme>(ColorScheme.LIGHT);
+    currentColorScheme: ColorScheme = ColorScheme.AUTO;
+    readonly $colorScheme = new BehaviorSubject<ColorScheme>(ColorScheme.AUTO);
 
     private document = inject(DOCUMENT);
 
@@ -37,6 +37,10 @@ export class ColorSchemeService implements ColorSchemeInterface {
                 this.document.documentElement.classList.add(this.currentColorScheme);
             }
         });
+    }
+
+    current(): ColorScheme {
+        return this.currentColorScheme;
     }
 
     observable(): BehaviorSubject<ColorScheme> {
