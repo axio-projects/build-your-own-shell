@@ -1,6 +1,44 @@
+@use '@angular/material' as mat;
+
 main.main {
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+ul.nav-menu {
+    flex: 1;
+    width: 100%;
+    padding: 0;
+
+    @include mat.button-overrides((text-container-shape: 0,
+            text-container-height: auto,
+            text-label-text-color: var(--mat-sys-on-background)));
+
+    li {
+        width: 100%;
+        list-style: none;
+
+        a {
+            width: 100%;
+            padding-block: 1.25rem;
+        }
+    }
+}
+
+nav.nav-menu-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: 1rem 2rem;
+}
+
+span.nav-menu-link-icon-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
 }

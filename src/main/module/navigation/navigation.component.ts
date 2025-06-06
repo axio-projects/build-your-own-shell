@@ -6,11 +6,10 @@ import { ColorScheme } from '../shared/service/color-scheme/model/color-scheme';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedService } from '../shared/shared.service';
-import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'main-navigation',
-    imports: [RouterLink, MatSidenavAdapterComponent, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
+    imports: [MatSidenavAdapterComponent, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss'
 })
@@ -62,7 +61,7 @@ export class NavigationComponent {
         this.shared.colorSchemes().observable().next(value);
     }
 
-    protected LIGHT = ColorScheme.LIGHT;
-    protected DARK = ColorScheme.DARK;
-    protected AUTO = ColorScheme.AUTO;
+    protected COLOR_SCHEME_LIGHT = ColorScheme.LIGHT;
+    protected COLOR_SCHEME_DARK = ColorScheme.DARK;
+    protected COLOR_SCHEME_AUTO = ColorScheme.AUTO;
 }

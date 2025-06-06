@@ -16,10 +16,10 @@
                 <button type="button" class="color-scheme-toggle-button" matButton matTooltip="Select a Theme" [matMenuTriggerFor]="colorSchemeMenu">
                     <span class="color-scheme-toggle-button-icon-container">
                         @switch (currentColorScheme) {
-                            @case (LIGHT) {
+                            @case (COLOR_SCHEME_LIGHT) {
                                 <mat-icon [fontSet]="fontSet">light_mode</mat-icon>
                             }
-                            @case (DARK) {
+                            @case (COLOR_SCHEME_DARK) {
                                 <mat-icon [fontSet]="fontSet">dark_mode</mat-icon>
                             }
                             @default {
@@ -31,19 +31,19 @@
                 <mat-menu #colorSchemeMenu="matMenu">
                     <ul class="color-scheme-menu">
                         <li>
-                            <button mat-menu-item (click)="onColorSchemeToggle(LIGHT)">
+                            <button mat-menu-item (click)="onColorSchemeToggle(COLOR_SCHEME_LIGHT)">
                                 <mat-icon [fontSet]="fontSet">light_mode</mat-icon>
                                 <span>Light</span>
                             </button>
                         </li>
                         <li>
-                            <button mat-menu-item (click)="onColorSchemeToggle(DARK)">
+                            <button mat-menu-item (click)="onColorSchemeToggle(COLOR_SCHEME_DARK)">
                                 <mat-icon [fontSet]="fontSet">dark_mode</mat-icon>
                                 <span>Dark</span>
                             </button>
                         </li>
                         <li>
-                            <button mat-menu-item (click)="onColorSchemeToggle(AUTO)">
+                            <button mat-menu-item (click)="onColorSchemeToggle(COLOR_SCHEME_AUTO)">
                                 <mat-icon [fontSet]="fontSet">routine</mat-icon>
                                 <span>System</span>
                             </button>
@@ -55,29 +55,10 @@
     </header>
     <main-mat-sidenav-adapter>
         <ng-container id="mat-sidenav-adapter">
-            <nav class="nav-menu-container">
-                <ul class="nav-menu">
-                    <li>
-                        <a class="description-link" routerLink="/description" matButton>
-                            <span class="nav-menu-link-icon-container">
-                                <mat-icon [fontSet]="fontSet">description</mat-icon>
-                                <span>Description</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="playground-link" routerLink="/playground" matButton>
-                            <span class="nav-menu-link-icon-container">
-                                <mat-icon [fontSet]="fontSet">code</mat-icon>
-                                <span>Playground</span>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <ng-content select="#main-mat-sidenav-adapter"></ng-content>
         </ng-container>
         <ng-container id="mat-sidenav-content-adapter">
-            <ng-content></ng-content>
+            <ng-content select="#main-mat-sidenav-content-adapter"></ng-content>
         </ng-container>
     </main-mat-sidenav-adapter>
 </section>
