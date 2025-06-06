@@ -7,6 +7,15 @@ main.main {
     flex-direction: column;
 }
 
+nav.nav-menu-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: 1rem 2rem;
+    border-inline-end: 1px solid var(--mat-sys-outline-variant);
+}
+
 ul.nav-menu {
     flex: 1;
     width: 100%;
@@ -14,7 +23,7 @@ ul.nav-menu {
 
     @include mat.button-overrides((text-container-shape: 0,
             text-container-height: auto,
-            text-label-text-color: var(--mat-sys-on-background)));
+            text-label-text-color: var(--mat-sys-on-surface-variant)));
 
     li {
         width: 100%;
@@ -23,16 +32,31 @@ ul.nav-menu {
         a {
             width: 100%;
             padding-block: 1.25rem;
+            transition: color 0.3s ease;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 2px;
+                opacity: 0;
+                background-color: var(--mat-sys-on-background);
+                transform: scale(.6);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            &:hover {
+                @include mat.button-overrides((text-label-text-color: var(--mat-sys-on-background)));
+            }
+
+            &.active::before {
+                opacity: 1;
+                transform: scaleY(.8);
+            }
         }
     }
-}
-
-nav.nav-menu-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-block: 1rem 2rem;
 }
 
 span.nav-menu-link-icon-container {

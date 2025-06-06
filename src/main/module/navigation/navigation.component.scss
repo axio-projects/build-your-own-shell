@@ -17,6 +17,7 @@ header.header {
     align-items: center;
     color: var(--mat-sys-on-background);
     background-color: var(--mat-sys-background);
+    transition: color 0.3s ease, background-color 0.3s ease;
 
     mat-slide-toggle {
         padding-inline: 16px;

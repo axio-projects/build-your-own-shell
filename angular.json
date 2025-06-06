@@ -24,6 +24,7 @@
                 "build": {
                     "builder": "@angular/build:application",
                     "options": {
+                        "baseHref": "/projects/build-your-own-shell/",
                         "browser": "src/main.ts",
                         "polyfills": [
                             "zone.js"
@@ -33,7 +34,7 @@
                         "assets": [
                             {
                                 "glob": "**/*",
-                                "input": "public"
+                                "input": "assets"
                             }
                         ],
                         "styles": [
@@ -91,7 +92,7 @@
                         "assets": [
                             {
                                 "glob": "**/*",
-                                "input": "public"
+                                "input": "assets"
                             }
                         ],
                         "styles": [

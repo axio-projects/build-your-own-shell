@@ -3,22 +3,16 @@
         <ng-container id="main-mat-sidenav-adapter">
             <nav class="nav-menu-container">
                 <ul class="nav-menu">
+                    @for (item of navMenuItems; track item.link) {
                     <li>
-                        <a class="description-link" routerLink="/description" matButton>
+                        <a [class]="item.link + '-link'" [routerLink]="item.link" routerLinkActive="active" matButton>
                             <span class="nav-menu-link-icon-container">
-                                <mat-icon [fontSet]="fontSet">description</mat-icon>
-                                <span>Description</span>
+                                <mat-icon [fontSet]="fontSet">{{ item.icon }}</mat-icon>
+                                <span>{{ item.label }}</span>
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a class="playground-link" routerLink="/playground" matButton>
-                            <span class="nav-menu-link-icon-container">
-                                <mat-icon [fontSet]="fontSet">code</mat-icon>
-                                <span>Playground</span>
-                            </span>
-                        </a>
-                    </li>
+                    }
                 </ul>
             </nav>
         </ng-container>
