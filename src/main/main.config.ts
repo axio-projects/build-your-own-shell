@@ -7,6 +7,7 @@ import { COLOR_SCHEME } from './module/shared/service/color-scheme/color-scheme.
 import { ColorSchemeService } from './module/shared/service/color-scheme/color-scheme.service';
 import { MAT_ICON } from './module/shared/service/mat-icon/mat-icon.interface';
 import { MatIconService } from './module/shared/service/mat-icon/mat-icon.service';
+import { FONT_SET } from './module/shared/definitions';
 
 export const mainConfig: ApplicationConfig = {
     providers: [
@@ -16,7 +17,8 @@ export const mainConfig: ApplicationConfig = {
         provideHttpClient(),
         makeEnvironmentProviders([
             { provide: MAT_ICON, useClass: MatIconService },
-            { provide: COLOR_SCHEME, useClass: ColorSchemeService }
+            { provide: COLOR_SCHEME, useClass: ColorSchemeService },
+            { provide: FONT_SET, useValue: 'material-symbols-outlined' }
         ])
     ]
 };

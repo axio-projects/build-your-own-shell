@@ -6,25 +6,30 @@ import { ColorScheme } from '../shared/service/color-scheme/model/color-scheme';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedService } from '../shared/shared.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'main-navigation',
-    imports: [MatSidenavAdapterComponent, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
+    imports: [RouterLink, MatSidenavAdapterComponent, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent {
     @Input({ required: true }) title!: string;
     @Input({ required: true }) iconName!: string;
-    @Input() fontSet = 'material-icons';
+
+    protected fontSet: string;
 
     protected hasMatIconService = false;
     protected hasColorSchemeService = false;
+
     protected currentColorScheme?: ColorScheme;
 
     constructor(
         public shared: SharedService
     ) {
+        this.fontSet = this.shared.fontSet;
+
         if (this.shared.hasMatIcons()) {
             this.hasMatIconService = true;
             this.shared.matIcons().initialize();

@@ -11,5 +11,4 @@ import { NavigationComponent } from './module/navigation/navigation.component';
 export class MainComponent {
     protected title = 'Build Your Own Shell';
     protected iconName = 'shell';
-    protected fontSet = 'material-symbols-outlined';
 }

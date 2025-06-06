@@ -1,6 +1,7 @@
-import { inject, Injectable } from '@angular/core';
+import { Inject, inject, Injectable, Optional } from '@angular/core';
 import { MAT_ICON, MatIconInterface } from './service/mat-icon/mat-icon.interface';
 import { COLOR_SCHEME, ColorSchemeInterface } from './service/color-scheme/color-scheme.interface';
+import { FONT_SET } from './definitions';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,13 @@ export class SharedService {
     private matIconService = inject(MAT_ICON, { optional: true });
     private colorSchemeService = inject(COLOR_SCHEME, { optional: true });
 
-    constructor() { }
+    constructor(
+        @Optional() @Inject(FONT_SET) public fontSet: string
+    ) {
+        if (this.fontSet === null) {
+            this.fontSet = 'material-icons';
+        }
+    }
 
     public hasMatIcons(): boolean {
         return this.matIconService !== null;
