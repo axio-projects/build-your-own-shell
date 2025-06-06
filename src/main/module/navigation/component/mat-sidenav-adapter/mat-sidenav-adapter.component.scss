@@ -1,14 +1,18 @@
+@use '@angular/material' as mat;
+
 :host {
     flex: 1;
     display: flex;
     flex-direction: column;
+
+    @include mat.sidenav-overrides((container-shape: 0));
 }
 
-mat-sidenav-container.mat-sidenav-adapter {
+mat-sidenav-container {
     flex: 1;
 }
 
 mat-sidenav {
     height: 100%;
-    max-width: 136px;
+    max-width: 138px;
 }

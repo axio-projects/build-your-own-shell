@@ -1,7 +1,7 @@
 <section class="navigation">
     <header class="header">
         <a class="home-link" href="/" matButton>
-            <span class="home-link-container">
+            <span class="home-link-icon-container">
                 @if (hasMatIconService) {
                     <mat-icon [svgIcon]="iconName" />
                 } @else {
@@ -13,37 +13,39 @@
         <h1>{{ title }}</h1>
         <div class="color-scheme-toggle-container">
             @if (hasColorSchemeService) {
-                <button type="button" class="color-scheme-toggle-button" matIconButton matTooltip="Select a Theme" [matMenuTriggerFor]="colorSchemeMenu">
-                    @switch (currentColorScheme) {
-                        @case (LIGHT) {
-                            <mat-icon fontSet="material-symbols-outlined">light_mode</mat-icon>
+                <button type="button" class="color-scheme-toggle-button" matButton matTooltip="Select a Theme" [matMenuTriggerFor]="colorSchemeMenu">
+                    <span class="color-scheme-toggle-button-icon-container">
+                        @switch (currentColorScheme) {
+                            @case (LIGHT) {
+                                <mat-icon fontSet="material-symbols-outlined">light_mode</mat-icon>
+                            }
+                            @case (DARK) {
+                                <mat-icon fontSet="material-symbols-outlined">dark_mode</mat-icon>
+                            }
+                            @default {
+                                <mat-icon fontSet="material-symbols-outlined">routine</mat-icon>
+                            }
                         }
-                        @case (DARK) {
-                            <mat-icon fontSet="material-symbols-outlined">dark_mode</mat-icon>
-                        }
-                        @default {
-                            <mat-icon fontSet="material-symbols-outlined">routine</mat-icon>
-                        }
-                    }
+                    </span>
                 </button>
                 <mat-menu #colorSchemeMenu="matMenu">
                     <ul class="color-scheme-menu">
                         <li>
                             <button mat-menu-item (click)="onColorSchemeToggle(LIGHT)">
-                                    <mat-icon fontSet="material-symbols-outlined">light_mode</mat-icon>
-                                    <span>Light</span>
+                                <mat-icon fontSet="material-symbols-outlined">light_mode</mat-icon>
+                                <span>Light</span>
                             </button>
                         </li>
                         <li>
                             <button mat-menu-item (click)="onColorSchemeToggle(DARK)">
-                                    <mat-icon fontSet="material-symbols-outlined">dark_mode</mat-icon>
-                                    <span>Dark</span>
+                                <mat-icon fontSet="material-symbols-outlined">dark_mode</mat-icon>
+                                <span>Dark</span>
                             </button>
                         </li>
                         <li>
                             <button mat-menu-item (click)="onColorSchemeToggle(AUTO)">
-                                    <mat-icon fontSet="material-symbols-outlined">routine</mat-icon>
-                                    <span>System</span>
+                                <mat-icon fontSet="material-symbols-outlined">routine</mat-icon>
+                                <span>System</span>
                             </button>
                         </li>
                     </ul>
@@ -52,6 +54,30 @@
         </div>
     </header>
     <main-mat-sidenav-adapter>
-        <ng-content></ng-content>
+        <ng-container id="mat-sidenav-adapter">
+            <nav class="nav-menu-container">
+                <ul class="nav-menu">
+                    <li>
+                        <a class="description-link" routerLink="/description" matButton>
+                            <span class="nav-menu-link-icon-container">
+                                <mat-icon fontSet="material-symbols-outlined">description</mat-icon>
+                                <span>Description</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="playground-link" routerLink="/playground" matButton>
+                            <span class="nav-menu-link-icon-container">
+                                <mat-icon fontSet="material-symbols-outlined">joystick</mat-icon>
+                                <span>Playground</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </ng-container>
+        <ng-container id="mat-sidenav-content-adapter">
+            <ng-content></ng-content>
+        </ng-container>
     </main-mat-sidenav-adapter>
 </section>
