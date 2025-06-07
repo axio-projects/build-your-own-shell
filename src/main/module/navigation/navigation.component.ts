@@ -6,12 +6,17 @@ import { ColorScheme } from '../shared/service/color-scheme/model/color-scheme';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedService } from '../shared/shared.service';
+import { VersionService } from '../shared/service/version/version.service';
+import { provideVersionService } from '../shared/service/version/version.interface';
 
 @Component({
     selector: 'main-navigation',
     imports: [MatSidenavAdapterComponent, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
     templateUrl: './navigation.component.html',
-    styleUrl: './navigation.component.scss'
+    styleUrl: './navigation.component.scss',
+    providers: [
+        provideVersionService()
+    ]
 })
 export class NavigationComponent {
     @Input({ required: true }) title!: string;
@@ -25,7 +30,8 @@ export class NavigationComponent {
     protected currentColorScheme?: ColorScheme;
 
     constructor(
-        public shared: SharedService
+        public shared: SharedService,
+        public version: VersionService
     ) {
         this.fontSet = this.shared.fontSet;
 

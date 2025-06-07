@@ -8,12 +8,12 @@
     @include mat.sidenav-overrides((container-shape: 0));
 }
 
-mat-sidenav-container {
-    flex: 1;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
 mat-sidenav {
     height: 100%;
     max-width: 138px;
+}
+
+mat-sidenav-container {
+    flex: 1;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }

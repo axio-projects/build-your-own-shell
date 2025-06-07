@@ -17,6 +17,7 @@ header.header {
     align-items: center;
     color: var(--mat-sys-on-background);
     background-color: var(--mat-sys-background);
+    border-block-end: solid 1px var(--mat-sys-outline-variant);
     transition: color 0.3s ease, background-color 0.3s ease;
 
     mat-slide-toggle {
@@ -85,4 +86,12 @@ ul.color-scheme-menu {
             }
         }
     }
+}
+
+nav.nav-menu-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-inline-end: 1px solid var(--mat-sys-outline-variant);
 }

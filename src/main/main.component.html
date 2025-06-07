@@ -1,9 +1,8 @@
 <main class="main">
     <main-navigation [title]="title" [iconName]="iconName">
         <ng-container id="main-mat-sidenav-adapter">
-            <nav class="nav-menu-container">
-                <ul class="nav-menu">
-                    @for (item of navMenuItems; track item.link) {
+            <ul class="nav-menu">
+                @for (item of navMenuItems; track item.link) {
                     <li>
                         <a [class]="item.link + '-link'" [routerLink]="item.link" routerLinkActive="active" matButton>
                             <span class="nav-menu-link-icon-container">
@@ -12,9 +11,8 @@
                             </span>
                         </a>
                     </li>
-                    }
-                </ul>
-            </nav>
+                }
+            </ul>
         </ng-container>
         <ng-container id="main-mat-sidenav-content-adapter">
             <router-outlet />

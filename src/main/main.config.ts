@@ -18,7 +18,7 @@ export const mainConfig: ApplicationConfig = {
         makeEnvironmentProviders([
             { provide: MAT_ICON, useClass: MatIconService },
             { provide: COLOR_SCHEME, useClass: ColorSchemeService },
-            { provide: FONT_SET, useValue: 'material-symbols-outlined' }
+            { provide: FONT_SET, useValue: 'material-symbols-outlined' },
         ])
     ]
 };

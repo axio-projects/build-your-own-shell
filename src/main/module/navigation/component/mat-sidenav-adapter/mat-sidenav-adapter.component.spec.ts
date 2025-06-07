@@ -1,23 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaterialSidenavComponent } from './material-sidenav.component';
+import { MatSidenavAdapterComponent } from './mat-sidenav-adapter.component';
 
-describe('MaterialSidenavComponent', () => {
-  let component: MaterialSidenavComponent;
-  let fixture: ComponentFixture<MaterialSidenavComponent>;
+describe('MatSidenavAdapterComponent', () => {
+    let component: MatSidenavAdapterComponent;
+    let fixture: ComponentFixture<MatSidenavAdapterComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MaterialSidenavComponent]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [MatSidenavAdapterComponent]
+        })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(MaterialSidenavComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(MatSidenavAdapterComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
