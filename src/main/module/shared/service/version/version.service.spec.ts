@@ -31,12 +31,20 @@ describe('VersionService', () => {
         expect(service.matches('1.0.x')).toBeTruthy();
     });
 
+    it('should match ~1.0.4', () => {
+        expect(service.matches('~1.0.4')).toBeTruthy();
+    });
+
     it('should match 1', () => {
         expect(service.matches('1')).toBeTruthy();
     });
 
     it('should match 1.x', () => {
         expect(service.matches('1.x')).toBeTruthy();
+    });
+
+    it('should match ^1.0.4', () => {
+        expect(service.matches('^1.0.4')).toBeTruthy();
     });
 
     it('should match *', () => {

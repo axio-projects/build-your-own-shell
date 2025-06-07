@@ -33,6 +33,10 @@ export class NavigationComponent {
         public shared: SharedService,
         public version: VersionService
     ) {
+        if (!this.version.matches('^20.0.0')) {
+            throw new Error(`unexpected angular version ${this.version.current()}`);
+        }
+
         this.fontSet = this.shared.fontSet;
 
         if (this.shared.hasMatIcons()) {

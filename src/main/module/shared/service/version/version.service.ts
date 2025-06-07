@@ -1,11 +1,23 @@
 import { inject, Injectable } from '@angular/core';
 import { ANGULAR_VERSION } from './version.interface';
 
+const Qualifier = {
+    NONE: 0,
+    ANY_PATCH: 1,
+    ANY_MINOR: 2
+} as const;
+
+type Qualifier = typeof Qualifier[keyof typeof Qualifier];
+
 @Injectable()
 export class VersionService {
-    private current = inject(ANGULAR_VERSION);
+    private ngVersion = inject(ANGULAR_VERSION);
 
     constructor() { }
+
+    current(): string {
+        return this.ngVersion.full;
+    }
 
     matches(version: string): boolean {
         if (!version || !version.length) {
@@ -13,6 +25,15 @@ export class VersionService {
         }
 
         let i = 0;
+        let qualifier: Qualifier = Qualifier.NONE;
+        if (version[i] === '^') {
+            qualifier = Qualifier.ANY_MINOR;
+            i += 1;
+        } else if (version[i] === '~') {
+            qualifier = Qualifier.ANY_PATCH;
+            i += 1;
+        }
+
         let parsed = {
             major: '',
             minor: 'x',
@@ -46,11 +67,11 @@ export class VersionService {
                 return true;
             }
 
-            if (i !== version.length) {
+            if (i !== version.length && qualifier < Qualifier.ANY_MINOR) {
                 parsed.minor = parseNumericIdentifier();
             }
 
-            if (i !== version.length) {
+            if (i !== version.length && qualifier < Qualifier.ANY_PATCH) {
                 parsed.patch = parseNumericIdentifier();
             }
         } catch (e) {
@@ -58,6 +79,6 @@ export class VersionService {
             return false;
         }
 
-        return this.current.major === parsed.major && (parsed.minor === 'x' || this.current.minor === parsed.minor) && (parsed.patch === 'x' || this.current.patch === parsed.patch);
+        return this.ngVersion.major === parsed.major && (parsed.minor === 'x' || this.ngVersion.minor === parsed.minor) && (parsed.patch === 'x' || this.ngVersion.patch === parsed.patch);
     }
 }
