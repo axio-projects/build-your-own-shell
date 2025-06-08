@@ -57,8 +57,8 @@
         <nav id="mat-sidenav-adapter" class="nav-menu-container">
             <ng-content select="#main-mat-sidenav-adapter"></ng-content>
         </nav>
-        <ng-container id="mat-sidenav-content-adapter">
+        <div id="mat-sidenav-content-adapter" class="content-container" cdkScrollable>
             <ng-content select="#main-mat-sidenav-content-adapter"></ng-content>
-        </ng-container>
+        </div>
     </main-mat-sidenav-adapter>
 </section>

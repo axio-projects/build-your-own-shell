@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { ANGULAR_VERSION } from './version.interface';
 
-const Qualifier = {
+const Qualifiers = {
     NONE: 0,
     ANY_PATCH: 1,
     ANY_MINOR: 2
 } as const;
 
-type Qualifier = typeof Qualifier[keyof typeof Qualifier];
+type Qualifiers = typeof Qualifiers[keyof typeof Qualifiers];
 
 @Injectable()
 export class VersionService {
@@ -25,12 +25,12 @@ export class VersionService {
         }
 
         let i = 0;
-        let qualifier: Qualifier = Qualifier.NONE;
+        let qualifier: Qualifiers = Qualifiers.NONE;
         if (version[i] === '^') {
-            qualifier = Qualifier.ANY_MINOR;
+            qualifier = Qualifiers.ANY_MINOR;
             i += 1;
         } else if (version[i] === '~') {
-            qualifier = Qualifier.ANY_PATCH;
+            qualifier = Qualifiers.ANY_PATCH;
             i += 1;
         }
 
@@ -55,6 +55,7 @@ export class VersionService {
                 if (Number.isFinite(+char)) {
                     builder.push(char);
                 } else {
+                    // TODO: enhance error message
                     throw new Error(`unexpected character ${char}`);
                 }
             }
@@ -67,11 +68,11 @@ export class VersionService {
                 return true;
             }
 
-            if (i !== version.length && qualifier < Qualifier.ANY_MINOR) {
+            if (i !== version.length && qualifier < Qualifiers.ANY_MINOR) {
                 parsed.minor = parseNumericIdentifier();
             }
 
-            if (i !== version.length && qualifier < Qualifier.ANY_PATCH) {
+            if (i !== version.length && qualifier < Qualifiers.ANY_PATCH) {
                 parsed.patch = parseNumericIdentifier();
             }
         } catch (e) {

@@ -2,16 +2,22 @@
     <main-navigation [title]="title" [iconName]="iconName">
         <ng-container id="main-mat-sidenav-adapter">
             <ul class="nav-menu">
-                @for (item of navMenuItems; track item.link) {
-                    <li>
-                        <a [class]="item.link + '-link'" [routerLink]="item.link" routerLinkActive="active" matButton>
-                            <span class="nav-menu-link-icon-container">
-                                <mat-icon [fontSet]="fontSet">{{ item.icon }}</mat-icon>
-                                <span>{{ item.label }}</span>
-                            </span>
-                        </a>
-                    </li>
-                }
+                <li>
+                    <a class="description-link" routerLink="/description" routerLinkActive="active" matButton>
+                        <span class="nav-menu-link-icon-container">
+                            <mat-icon [fontSet]="fontSet">description</mat-icon>
+                            <span>Description</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="playground-link" routerLink="/playground" routerLinkActive="active" matButton>
+                        <span class="nav-menu-link-icon-container">
+                            <mat-icon [fontSet]="fontSet">code</mat-icon>
+                            <span>Playground</span>
+                        </span>
+                    </a>
+                </li>
             </ul>
         </ng-container>
         <ng-container id="main-mat-sidenav-content-adapter">

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatSidenavAdapterComponent } from './component/mat-sidenav-adapter/mat-sidenav-adapter.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ColorScheme } from '../shared/service/color-scheme/model/color-scheme';
+import { ColorSchemes } from '../shared/service/color-scheme/model/color-schemes';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedService } from '../shared/shared.service';
@@ -27,7 +27,7 @@ export class NavigationComponent {
     protected hasMatIconService = false;
     protected hasColorSchemeService = false;
 
-    protected currentColorScheme?: ColorScheme;
+    protected currentColorScheme?: ColorSchemes;
 
     constructor(
         public shared: SharedService,
@@ -50,16 +50,16 @@ export class NavigationComponent {
             this.currentColorScheme = colorSchemeService.current();
             colorSchemeService.observable().subscribe(next => {
                 switch (next) {
-                    case ColorScheme.LIGHT: {
-                        this.currentColorScheme = ColorScheme.LIGHT;
+                    case ColorSchemes.LIGHT: {
+                        this.currentColorScheme = ColorSchemes.LIGHT;
                         break;
                     }
-                    case ColorScheme.DARK: {
-                        this.currentColorScheme = ColorScheme.DARK;
+                    case ColorSchemes.DARK: {
+                        this.currentColorScheme = ColorSchemes.DARK;
                         break;
                     }
                     default: {
-                        this.currentColorScheme = ColorScheme.AUTO;
+                        this.currentColorScheme = ColorSchemes.AUTO;
                         break;
                     }
                 }
@@ -67,11 +67,11 @@ export class NavigationComponent {
         }
     }
 
-    onColorSchemeToggle(value: ColorScheme): void {
+    onColorSchemeToggle(value: ColorSchemes): void {
         this.shared.colorSchemes().observable().next(value);
     }
 
-    protected COLOR_SCHEME_LIGHT = ColorScheme.LIGHT;
-    protected COLOR_SCHEME_DARK = ColorScheme.DARK;
-    protected COLOR_SCHEME_AUTO = ColorScheme.AUTO;
+    protected COLOR_SCHEME_LIGHT = ColorSchemes.LIGHT;
+    protected COLOR_SCHEME_DARK = ColorSchemes.DARK;
+    protected COLOR_SCHEME_AUTO = ColorSchemes.AUTO;
 }

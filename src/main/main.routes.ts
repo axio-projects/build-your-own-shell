@@ -1,31 +1,25 @@
 import { Routes } from '@angular/router';
 import { DescriptionComponent } from './module/description/description.component';
-
-const Paths = {
-    EMPTY: '',
-    DESCRIPTION: 'description',
-    PLAYGROUND: 'playground',
-    ALL: '**'
-} as const;
+import { PlaygroundComponent } from './module/playground/playground.component';
 
 export const routes: Routes = [
     {
-        path: Paths.EMPTY,
+        path: '',
         pathMatch: 'full',
-        redirectTo: Paths.DESCRIPTION
+        redirectTo: 'description'
     },
     {
-        path: Paths.DESCRIPTION,
-        pathMatch: 'full',
-        component: DescriptionComponent
-    },
-    {
-        path: Paths.PLAYGROUND,
+        path: 'description',
         pathMatch: 'full',
         component: DescriptionComponent
     },
     {
-        path: Paths.ALL,
+        path: 'playground',
+        pathMatch: 'full',
+        component: PlaygroundComponent
+    },
+    {
+        path: '**',
         component: DescriptionComponent
     }
 ];

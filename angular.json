@@ -12,6 +12,11 @@
                     "prefix": "main",
                     "type": "component"
                 },
+                "@schematics/angular:directive": {
+                    "path": "src/main",
+                    "prefix": "main",
+                    "type": "directive"
+                },
                 "@schematics/angular:service": {
                     "path": "src/main",
                     "type": "service"
@@ -24,6 +29,7 @@
                 "build": {
                     "builder": "@angular/build:application",
                     "options": {
+                        "outputPath": "bin/build-your-own-shell",
                         "baseHref": "/projects/build-your-own-shell/",
                         "browser": "src/main.ts",
                         "polyfills": [
@@ -34,7 +40,7 @@
                         "assets": [
                             {
                                 "glob": "**/*",
-                                "input": "assets"
+                                "input": "include"
                             }
                         ],
                         "styles": [
@@ -92,7 +98,7 @@
                         "assets": [
                             {
                                 "glob": "**/*",
-                                "input": "assets"
+                                "input": "include"
                             }
                         ],
                         "styles": [

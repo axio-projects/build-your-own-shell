@@ -1,0 +1,11 @@
+<div class="resizeable-vertical-container">
+    <div class="north-handle" (mousedown)="onResizeNorth($event)"></div>
+    <div class="resizeable-horizontal-container">
+        <div class="west-handle" (mousedown)="onResizeWest($event)"></div>
+        <div class="resizeable-content">
+            <ng-content></ng-content>
+        </div>
+        <div class="east-handle" (mousedown)="onResizeEast($event)"></div>
+    </div>
+    <div class="south-handle" (mousedown)="onResizeSouth($event)"></div>
+</div>

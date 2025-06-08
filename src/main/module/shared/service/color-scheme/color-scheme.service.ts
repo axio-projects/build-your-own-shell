@@ -1,5 +1,5 @@
 import { DOCUMENT, inject, Injectable, NgZone } from '@angular/core';
-import { ColorScheme } from './model/color-scheme';
+import { ColorSchemes } from './model/color-schemes';
 import { BehaviorSubject } from 'rxjs';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ColorSchemeInterface } from './color-scheme.interface';
@@ -8,8 +8,8 @@ const PREFERS_COLOR_SCHEME_DARK = '(prefers-color-scheme: dark)';
 
 @Injectable()
 export class ColorSchemeService implements ColorSchemeInterface {
-    currentColorScheme: ColorScheme = ColorScheme.AUTO;
-    readonly $colorScheme = new BehaviorSubject<ColorScheme>(ColorScheme.AUTO);
+    currentColorScheme: ColorSchemes = ColorSchemes.AUTO;
+    readonly $colorScheme = new BehaviorSubject<ColorSchemes>(ColorSchemes.AUTO);
 
     private document = inject(DOCUMENT);
 
@@ -19,14 +19,14 @@ export class ColorSchemeService implements ColorSchemeInterface {
     ) {
         const mql = this.matcher.matchMedia(PREFERS_COLOR_SCHEME_DARK);
         if (mql.matches) {
-            this.$colorScheme.next(ColorScheme.DARK);
+            this.$colorScheme.next(ColorSchemes.DARK);
         }
 
         mql.addEventListener('change', (e: MediaQueryListEvent): void => this.zone.run(() => {
             if (e.matches) {
-                this.$colorScheme.next(ColorScheme.DARK);
+                this.$colorScheme.next(ColorSchemes.DARK);
             } else {
-                this.$colorScheme.next(ColorScheme.LIGHT);
+                this.$colorScheme.next(ColorSchemes.LIGHT);
             }
         }));
 
@@ -39,11 +39,11 @@ export class ColorSchemeService implements ColorSchemeInterface {
         });
     }
 
-    current(): ColorScheme {
+    current(): ColorSchemes {
         return this.currentColorScheme;
     }
 
-    observable(): BehaviorSubject<ColorScheme> {
+    observable(): BehaviorSubject<ColorSchemes> {
         return this.$colorScheme;
     }
 

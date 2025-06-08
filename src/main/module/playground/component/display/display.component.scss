@@ -1,0 +1,11 @@
+div.display {
+    background-color: var(--mat-sys-surface-container);
+    padding: 0.375rem 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+div.display-line {
+    color: var(--mat-sys-on-surface);
+    letter-spacing: 0;
+    transition: color 0.3s ease;
+}

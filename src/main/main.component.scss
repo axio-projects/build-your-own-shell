@@ -8,7 +8,7 @@ main.main {
 }
 
 ul.nav-menu {
-    flex: 1;
+    flex: 1 1 auto;
     width: 100%;
     padding: 0;
 
@@ -35,7 +35,7 @@ ul.nav-menu {
                 opacity: 0;
                 background-color: var(--mat-sys-on-background);
                 transform: scale(.6);
-                transition: opacity 0.3s ease, transform 0.3s ease;
+                transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
             }
 
             &:hover {
