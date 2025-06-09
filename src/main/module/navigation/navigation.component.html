@@ -1,5 +1,5 @@
 <section class="navigation">
-    <header class="header">
+    <mat-toolbar class="mat-toolbar">
         <a class="home-link" href="/" matButton>
             <span class="home-link-icon-container">
                 @if (icon.length !== 0 && !hideIcon) {
@@ -50,13 +50,17 @@
                 </mat-menu>
             }
         </div>
-    </header>
-    <main-mat-sidenav-adapter>
-        <nav id="mat-sidenav-adapter" class="nav-menu-container">
-            <ng-content select="#main-mat-sidenav-adapter"></ng-content>
-        </nav>
-        <div id="mat-sidenav-content-adapter" class="content-container" cdkScrollable>
-            <ng-content select="#main-mat-sidenav-content-adapter"></ng-content>
-        </div>
-    </main-mat-sidenav-adapter>
+    </mat-toolbar>
+    <mat-sidenav-container class="mat-sidenav-container">
+        <mat-sidenav mode="side" fixedInViewport fixedTopGap="54" opened>
+            <nav class="nav-menu-container">
+                <ng-content select="#main-mat-sidenav"></ng-content>
+            </nav>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="content-container" cdkScrollable>
+                <ng-content select="#main-mat-sidenav-content"></ng-content>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </section>

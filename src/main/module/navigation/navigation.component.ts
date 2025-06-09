@@ -1,5 +1,4 @@
 import { booleanAttribute, Component, inject, Input, OnInit } from '@angular/core';
-import { MatSidenavAdapterComponent } from './component/mat-sidenav-adapter/mat-sidenav-adapter.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ColorSchemes } from '../shared/service/color-scheme/model/color-schemes';
@@ -9,10 +8,12 @@ import { SharedService } from '../shared/shared.service';
 import { VersionService } from '../shared/service/version/version.service';
 import { provideVersionService } from '../shared/service/version/version.interface';
 import { DEFAULT_NAVIGATION_INPUTS } from './navigation.interface';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
     selector: 'main-navigation',
-    imports: [MatSidenavAdapterComponent, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
+    imports: [MatSidenavModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss',
     inputs: [
@@ -29,7 +30,7 @@ export class NavigationComponent implements OnInit {
         return this._icon;
     }
     set icon(value: string) {
-        this._icon = value ? value.trim() : '';
+        this._icon = value.trim();
     }
 
     @Input({ transform: booleanAttribute }) hideIcon;
