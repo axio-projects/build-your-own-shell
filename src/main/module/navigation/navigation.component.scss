@@ -33,6 +33,7 @@ header.header {
 
 a.home-link {
     height: 100%;
+    min-width: 138px;
 
     @include mat.button-overrides((text-container-shape: 0));
 }

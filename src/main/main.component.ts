@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class MainComponent {
     protected title = 'Build Your Own Shell';
-    protected iconName = 'shell';
+    protected icon = 'shell';
 
     protected fontSet: string;
 

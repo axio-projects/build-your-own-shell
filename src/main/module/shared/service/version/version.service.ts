@@ -20,7 +20,7 @@ export class VersionService {
     }
 
     matches(version: string): boolean {
-        if (!version || !version.length) {
+        if (version.trim().length === 0) {
             return false;
         }
 

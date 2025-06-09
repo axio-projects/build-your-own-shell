@@ -2,20 +2,18 @@
     <header class="header">
         <a class="home-link" href="/" matButton>
             <span class="home-link-icon-container">
-                @if (hasMatIconService) {
-                    <mat-icon [svgIcon]="iconName" />
-                } @else {
-                    <mat-icon [fontSet]="fontSet">{{ iconName }}</mat-icon>
+                @if (icon.length !== 0 && !hideIcon) {
+                    <mat-icon [svgIcon]="icon" />
                 }
                 <span>Axio</span>
             </span>
         </a>
         <h1>{{ title }}</h1>
         <div class="color-scheme-toggle-container">
-            @if (hasColorSchemeService) {
+            @if (!hideColorScheme) {
                 <button type="button" class="color-scheme-toggle-button" matButton matTooltip="Select a Theme" [matMenuTriggerFor]="colorSchemeMenu">
                     <span class="color-scheme-toggle-button-icon-container">
-                        @switch (currentColorScheme) {
+                        @switch (colorScheme) {
                             @case (COLOR_SCHEME_LIGHT) {
                                 <mat-icon [fontSet]="fontSet">light_mode</mat-icon>
                             }

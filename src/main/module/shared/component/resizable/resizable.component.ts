@@ -1,12 +1,12 @@
 import { Component, DOCUMENT, ElementRef, inject } from '@angular/core';
 
 @Component({
-    selector: '[main-resizeable], [mainResizeable]',
+    selector: '[main-resizable], [mainResizable]',
     imports: [],
-    templateUrl: './resizeable.component.html',
-    styleUrl: './resizeable.component.scss'
+    templateUrl: './resizable.component.html',
+    styleUrl: './resizable.component.scss'
 })
-export class ResizeableComponent {
+export class ResizebleComponent {
     protected move?: (event: MouseEvent) => void;
 
     protected resize = (event: MouseEvent) => this.onResize(event);

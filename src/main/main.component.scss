@@ -7,8 +7,14 @@ main.main {
     flex-direction: column;
 }
 
-ul.nav-menu {
+div.nav-menu-container {
     flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+ul.nav-menu {
     width: 100%;
     padding: 0;
 

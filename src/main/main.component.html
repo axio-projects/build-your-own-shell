@@ -1,24 +1,36 @@
 <main class="main">
-    <main-navigation [title]="title" [iconName]="iconName">
+    <main-navigation [title]="title" [icon]="icon">
         <ng-container id="main-mat-sidenav-adapter">
-            <ul class="nav-menu">
-                <li>
-                    <a class="description-link" routerLink="/description" routerLinkActive="active" matButton>
-                        <span class="nav-menu-link-icon-container">
-                            <mat-icon [fontSet]="fontSet">description</mat-icon>
-                            <span>Description</span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a class="playground-link" routerLink="/playground" routerLinkActive="active" matButton>
-                        <span class="nav-menu-link-icon-container">
-                            <mat-icon [fontSet]="fontSet">code</mat-icon>
-                            <span>Playground</span>
-                        </span>
-                    </a>
-                </li>
-            </ul>
+            <div class="nav-menu-container">
+                <ul class="nav-menu">
+                    <li>
+                        <a class="description-link" routerLink="/description" routerLinkActive="active" matButton>
+                            <span class="nav-menu-link-icon-container">
+                                <mat-icon [fontSet]="fontSet">description</mat-icon>
+                                <span>Description</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="playground-link" routerLink="/playground" routerLinkActive="active" matButton>
+                            <span class="nav-menu-link-icon-container">
+                                <mat-icon [fontSet]="fontSet">code</mat-icon>
+                                <span>Playground</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav-menu">
+                    <li>
+                        <a class="reference-link" routerLink="/reference" routerLinkActive="active" matButton>
+                            <span class="nav-menu-link-icon-container">
+                                <mat-icon [fontSet]="fontSet">quick_reference_all</mat-icon>
+                                <span>Reference</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </ng-container>
         <ng-container id="main-mat-sidenav-content-adapter">
             <router-outlet />

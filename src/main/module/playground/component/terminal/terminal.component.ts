@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { DisplayComponent } from '../display/display.component';
-import { ResizeableComponent } from '../../../shared/component/resizeable/resizeable.component';
+import { ResizebleComponent } from '../../../shared/component/resizable/resizable.component';
 
 @Component({
     selector: 'main-terminal',
-    imports: [DisplayComponent, ResizeableComponent],
+    imports: [DisplayComponent, ResizebleComponent],
     templateUrl: './terminal.component.html',
     styleUrl: './terminal.component.scss'
 })
