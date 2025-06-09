@@ -19,11 +19,6 @@ export const routes: Routes = [
         component: PlaygroundComponent
     },
     {
-        path: 'reference',
-        pathMatch: 'full',
-        component: DescriptionComponent
-    },
-    {
         path: '**',
         component: DescriptionComponent
     }

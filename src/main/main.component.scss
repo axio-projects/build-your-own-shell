@@ -26,7 +26,8 @@ ul.nav-menu {
         width: 100%;
         list-style: none;
 
-        a {
+        a,
+        button {
             width: 100%;
             padding-block: 1.25rem;
             transition: color 0.3s ease;
@@ -62,4 +63,12 @@ span.nav-menu-link-icon-container {
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
+}
+
+div.reference {
+    width: calc(100vw - 8rem);
+    height: calc(100vh - 8rem);
+    margin: 1rem;
+    border-radius: 16px;
+    background-color: var(--mat-sys-surface-variant);
 }

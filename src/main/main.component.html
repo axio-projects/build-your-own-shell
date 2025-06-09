@@ -22,12 +22,12 @@
                 </ul>
                 <ul class="nav-menu">
                     <li>
-                        <a class="reference-link" routerLink="/reference" routerLinkActive="active" matButton>
+                        <button class="reference-link" (click)="toggleReference()" matButton>
                             <span class="nav-menu-link-icon-container">
                                 <mat-icon [fontSet]="fontSet">quick_reference_all</mat-icon>
                                 <span>Reference</span>
                             </span>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -37,3 +37,8 @@
         </ng-container>
     </main-navigation>
 </main>
+
+<ng-template #reference>
+    <div class="reference">
+    </div>
+</ng-template>
